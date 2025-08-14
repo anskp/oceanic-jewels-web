@@ -193,6 +193,30 @@ const Certifications = () => {
           </div>
         </section>
 
+        {/* FDA Certificate Display */}
+        <section className="py-20 bg-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-6">Official Documentation</h2>
+              <p className="text-xl text-muted-foreground">
+                View our official FDA Certificate of Registration.
+              </p>
+            </div>
+            
+            <div className="max-w-4xl mx-auto">
+              <Card className="border-0 shadow-deep overflow-hidden">
+                <CardContent className="p-0">
+                  <img 
+                    src="/lovable-uploads/568c37b6-153c-447f-958a-2dce4be201f8.png" 
+                    alt="FDA Certificate of Registration for Al Manwari International LLC" 
+                    className="w-full h-auto"
+                  />
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
         {/* Quality Testing */}
         <section className="py-20 bg-gradient-surface">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -24,10 +24,17 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="text-2xl font-bold bg-gradient-ocean bg-clip-text text-transparent">
-              AL-MANWARI
+            <img 
+              src="/lovable-uploads/e7716581-2732-401f-9f91-75bcd2dfc5ce.png" 
+              alt="Al Manwari International Logo" 
+              className="h-12 w-12"
+            />
+            <div className="flex flex-col">
+              <div className="text-2xl font-bold bg-gradient-ocean bg-clip-text text-transparent">
+                AL-MANWARI
+              </div>
+              <div className="text-sm text-muted-foreground">INTERNATIONAL</div>
             </div>
-            <div className="text-sm text-muted-foreground">INTERNATIONAL</div>
           </Link>
 
           {/* Desktop Navigation */}
