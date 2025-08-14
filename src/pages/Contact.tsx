@@ -17,6 +17,7 @@ import {
   FileText,
   Truck
 } from "lucide-react";
+import contactHero from "@/assets/company-vessel.jpg";
 
 const Contact = () => {
   const contactInfo = [
@@ -83,16 +84,23 @@ const Contact = () => {
       <Navigation />
       
       <main>
-        {/* Hero Section */}
-        <section className="bg-gradient-ocean text-background py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Hero Section with Background Image */}
+        <section className="relative py-20 overflow-hidden text-background">
+          <div className="absolute inset-0">
+            <img
+              src={contactHero}
+              alt="Contact Al Manwari International"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-deep/80" />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               Contact
               <span className="block text-accent">Al Manwari International</span>
             </h1>
             <p className="text-xl text-background/80 max-w-3xl mx-auto">
-              Ready to discuss your seafood sourcing needs? Get in touch with our team 
-              for product inquiries, quotes, and partnership opportunities.
+              Ready to discuss your seafood sourcing needs? Get in touch with our team for product inquiries, quotes, and partnership opportunities.
             </p>
           </div>
         </section>
@@ -240,15 +248,32 @@ const Contact = () => {
                   </CardContent>
                 </Card>
 
-                {/* Map Placeholder */}
+                {/* Map */}
                 <Card className="border-0 shadow-deep">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <MapPin className="h-5 w-5 text-primary" />
+                      Location Map
+                    </CardTitle>
+                  </CardHeader>
                   <CardContent className="p-0">
-                    <div className="bg-gradient-seafoam h-48 rounded-lg flex items-center justify-center">
-                      <div className="text-center">
-                        <MapPin className="h-8 w-8 text-primary mx-auto mb-2" />
-                        <div className="font-semibold">Rusayl Industrial Estate</div>
-                        <div className="text-sm text-muted-foreground">Sultanate of Oman</div>
-                      </div>
+                    <div className="aspect-video w-full rounded-lg overflow-hidden">
+                      <iframe
+                        title="Al Manwari International LLC Location"
+                        src="https://www.google.com/maps?q=Rusayl%20industrial%20estate%2C%20Road%20No.%2012%2C%20Rusayl%2C%20Oman&output=embed"
+                        width="100%"
+                        height="100%"
+                        className="w-full h-full border-0"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        allowFullScreen
+                      />
+                    </div>
+                    <div className="p-4 text-sm text-muted-foreground">
+                      <div>Al Manwari International LLC</div>
+                      <div>P. O. Box 327, P. C 124</div>
+                      <div>Rusayl Industrial Estate, Road No. 12</div>
+                      <div>Rusayl, Sultanate of Oman</div>
                     </div>
                   </CardContent>
                 </Card>

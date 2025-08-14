@@ -18,43 +18,24 @@ const ParticlesBackground = ({ className = "" }: ParticlesBackgroundProps) => {
 
   return (
     <Particles
-      id="tsparticles"
+      id="tsparticles-hero"
       className={className}
       options={{
-        background: {
-          color: {
-            value: "transparent",
-          },
-        },
+        background: { color: { value: "transparent" } },
         fpsLimit: 120,
         interactivity: {
           events: {
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
-            onHover: {
-              enable: true,
-              mode: "repulse",
-            },
-            resize: {
-              enable: true,
-            },
+            onClick: { enable: false, mode: "push" },
+            onHover: { enable: false, mode: "repulse" },
+            resize: { enable: true },
           },
           modes: {
-            push: {
-              quantity: 4,
-            },
-            repulse: {
-              distance: 200,
-              duration: 0.4,
-            },
+            push: { quantity: 2 },
+            repulse: { distance: 120, duration: 0.3 },
           },
         },
         particles: {
-          color: {
-            value: ["#1e40af", "#0ea5e9", "#06b6d4"],
-          },
+          color: { value: ["#1e40af", "#0ea5e9", "#06b6d4"] },
           links: {
             color: "#0ea5e9",
             distance: 150,
@@ -69,20 +50,20 @@ const ParticlesBackground = ({ className = "" }: ParticlesBackgroundProps) => {
               default: "bounce",
             },
             random: false,
-            speed: 1,
+            speed: 0.6,
             straight: false,
           },
           number: {
-            value: 80,
+            value: 40,
           },
           opacity: {
-            value: 0.2,
+            value: 0.15,
           },
           shape: {
             type: "circle",
           },
           size: {
-            value: { min: 1, max: 3 },
+            value: { min: 1, max: 2 },
           },
         },
         detectRetina: true,

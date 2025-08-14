@@ -2,6 +2,7 @@ import Navigation from "@/components/ui/navigation";
 import Footer from "@/components/ui/footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import companyBranding from "@/assets/certification.jpg";
 import { Button } from "@/components/ui/button";
 import { Award, Shield, CheckCircle, Globe, FileText, Calendar } from "lucide-react";
 
@@ -81,9 +82,17 @@ const Certifications = () => {
       <Navigation />
       
       <main>
-        {/* Hero Section */}
-        <section className="bg-gradient-ocean text-background py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Hero Section with Background Image */}
+        <section className="relative py-20 overflow-hidden text-background">
+          <div className="absolute inset-0">
+            <img
+              src={companyBranding}
+              alt="Certifications and quality assurance"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-deep/80" />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Badge variant="outline" className="border-background/30 text-background mb-6">
               Quality Assured
             </Badge>
@@ -92,8 +101,7 @@ const Certifications = () => {
               <span className="block text-accent">Compliance</span>
             </h1>
             <p className="text-xl text-background/80 max-w-3xl mx-auto">
-              Our commitment to quality and safety is validated through comprehensive 
-              certifications and compliance with international standards.
+              Our commitment to quality and safety is validated through comprehensive certifications and compliance with international standards.
             </p>
           </div>
         </section>

@@ -5,51 +5,122 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Fish, Snowflake, Package, Truck, Award } from "lucide-react";
 import tunaImage from "@/assets/tuna-product.jpg";
+import productsHero from "@/assets/products-showcase.jpg";
 
 const Products = () => {
   const productCategories = [
     {
-      title: "Yellowfin Tuna",
-      description: "Premium frozen yellowfin tuna in various cuts",
-      products: ["Loins", "Nuggets", "Portions", "Steaks"],
+      title: "Frozen Yellowfin Tuna",
+      description: "Premium frozen yellowfin tuna in export-ready cuts.",
+      products: ["Loin", "Nuggets", "Portions"],
       features: ["Premium Grade", "Flash Frozen", "Vacuum Packed"],
-      image: tunaImage
+      image: "/images/yellowfishtuna.webp",
     },
     {
-      title: "Mahi Mahi",
-      description: "Fresh frozen mahi mahi fillets and portions",
+      title: "Frozen Mahi Mahi",
+      description: "Fresh frozen mahi mahi with excellent texture and taste.",
       products: ["Fillets", "Steaks", "Portions"],
-      features: ["Fresh Frozen", "Skinless", "Boneless"],
-      image: tunaImage
+      features: ["Fresh Frozen", "Skinless Options", "Export Quality"],
+      image: "/images/mahimahi.webp",
     },
     {
-      title: "Cephalopods",
-      description: "Premium squid, octopus and cuttle fish",
-      products: ["Squid Tubes", "Octopus", "Cuttle Fish", "Squid Rings"],
-      features: ["Cleaned", "Frozen", "Export Quality"],
-      image: tunaImage
-    },
-    {
-      title: "Mackerel Varieties",
-      description: "Different species of premium mackerel",
-      products: ["Indian Mackerel", "Horse Mackerel", "Chub Mackerel"],
-      features: ["Whole Fish", "Fresh Frozen", "Premium Grade"],
-      image: tunaImage
-    },
-    {
-      title: "Shellfish",
-      description: "Premium crabs and shrimp products",
-      products: ["Mud Crab", "Swimming Crab", "Shrimp", "Prawns"],
-      features: ["Live Frozen", "Cleaned", "Export Grade"],
-      image: tunaImage
-    },
-    {
-      title: "Other Species",
-      description: "Additional premium seafood varieties",
-      products: ["Hilsa", "Barracuda", "Amberjack", "Yellow Tail Scad", "Sardine", "Japanese Thread Fin Bream"],
+      title: "Frozen Cuttle Fish",
+      description: "Cleaned cuttle fish suitable for multiple preparations.",
+      products: ["Whole Cleaned", "Fillets"],
       features: ["Fresh Frozen", "Quality Assured", "Export Ready"],
-      image: tunaImage
-    }
+      image: "/images/cuttlefish.png",
+    },
+    {
+      title: "Frozen Squid",
+      description: "Premium squid packed for consistent quality.",
+      products: ["Tubes", "Rings", "Whole Cleaned"],
+      features: ["Cleaned", "Fresh Frozen", "Export Quality"],
+      image: "/images/squid.jpg",
+    },
+    {
+      title: "Frozen Indian Mackerel",
+      description: "Popular mackerel variety from Oman's waters.",
+      products: ["Whole", "Fillets"],
+      features: ["Fresh Frozen", "Premium Grade"],
+      image: "/images/Indian mackerel.png",
+    },
+    {
+      title: "Frozen Horse Mackerel",
+      description: "High-quality horse mackerel, carefully processed.",
+      products: ["Whole", "Fillets"],
+      features: ["Fresh Frozen", "Export Ready"],
+      image: "/images/Indian mackerel.png",
+    },
+    {
+      title: "Frozen Crab",
+      description: "Crab processed and frozen to preserve flavor.",
+      products: ["Whole", "Sections"],
+      features: ["Premium Selection", "Fresh Frozen"],
+      image: "/images/crab.jpg",
+    },
+    {
+      title: "Frozen Hilsa",
+      description: "Hilsa with authentic taste and texture.",
+      products: ["Whole", "Steaks"],
+      features: ["Fresh Frozen", "Quality Assured"],
+      image: "/images/hilsa.jpeg",
+    },
+    {
+      title: "Frozen Barracuda",
+      description: "Firm, flavorful barracuda, ideal for grilling and curries.",
+      products: ["Whole", "Steaks"],
+      features: ["Fresh Frozen", "Export Quality"],
+      image: "/images/barracuda.png",
+    },
+    {
+      title: "Frozen Amberjack",
+      description: "Versatile amberjack, frozen to lock in freshness.",
+      products: ["Whole", "Steaks"],
+      features: ["Fresh Frozen", "Premium Grade"],
+      image: "/images/amberjack.jpg",
+    },
+    {
+      title: "Frozen Octopus",
+      description: "Tender octopus processed for excellent texture.",
+      products: ["Whole Cleaned", "Tentacles"],
+      features: ["Fresh Frozen", "Export Ready"],
+      image: "/images/frozen-octopus.jpg",
+    },
+    {
+      title: "Frozen Shrimp",
+      description: "Shrimp available in multiple sizes and formats.",
+      products: ["Head-On", "Headless", "Peeled"],
+      features: ["Fresh Frozen", "Quality Assured"],
+      image: "/images/Frozen-Shrimp.jpg",
+    },
+    {
+      title: "Frozen Yellow Tail Scad",
+      description: "Yellow tail scad, a popular choice across markets.",
+      products: ["Whole"],
+      features: ["Fresh Frozen", "Export Quality"],
+      image: "/images/yellow tail scad.jpg",
+    },
+    {
+      title: "Frozen Sardine",
+      description: "Omani sardines known for rich flavor.",
+      products: ["Whole"],
+      features: ["Fresh Frozen", "Premium Grade"],
+      image: "/images/satine.jpg",
+    },
+    {
+      title: "Frozen Chub Mackerel",
+      description: "Quality chub mackerel for diverse cuisines.",
+      products: ["Whole", "Fillets"],
+      features: ["Fresh Frozen", "Export Ready"],
+      image: "/images/club mackarel.jpg",
+    },
+    {
+      title: "Frozen Japanese Thread Fin Bream",
+      description: "Delicate thread fin bream with excellent taste.",
+      products: ["Whole", "Fillets"],
+      features: ["Fresh Frozen", "Quality Assured"],
+      image: "/images/Frozen Japanese thread fin bream.jpg",
+    },
   ];
 
   const specifications = [
@@ -64,16 +135,23 @@ const Products = () => {
       <Navigation />
       
       <main>
-        {/* Hero Section */}
-        <section className="bg-gradient-ocean text-background py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Hero Section with Background Image */}
+        <section className="relative py-20 overflow-hidden text-background">
+          <div className="absolute inset-0">
+            <img
+              src={productsHero}
+              alt="Premium seafood product showcase"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-deep/80" />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               Premium Seafood
               <span className="block text-accent">Product Catalog</span>
             </h1>
             <p className="text-xl text-background/80 max-w-3xl mx-auto">
-              Discover our comprehensive range of frozen seafood products, 
-              sourced from the pristine waters of Oman and processed to the highest international standards.
+              Discover our comprehensive range of frozen seafood products, sourced from the pristine waters of Oman and processed to the highest international standards.
             </p>
           </div>
         </section>
@@ -108,7 +186,7 @@ const Products = () => {
                   <div className="md:flex">
                     <div className="md:w-1/3">
                       <img
-                        src={category.image}
+                        src={encodeURI(category.image)}
                         alt={category.title}
                         className="w-full h-48 md:h-full object-cover"
                       />

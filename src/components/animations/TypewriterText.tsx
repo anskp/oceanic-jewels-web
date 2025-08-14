@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react';
-import TypeIt from 'typeit';
+import { useEffect, useState } from 'react';
 
 interface TypewriterTextProps {
   text: string | string[];
@@ -14,34 +13,73 @@ const TypewriterText = ({
   className = "", 
   speed = 50, 
   startDelay = 0,
-  loop = false 
+  loop = true 
 }: TypewriterTextProps) => {
-  const elementRef = useRef<HTMLSpanElement>(null);
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const strings = Array.isArray(text) ? text : [text];
+  const currentString = strings[currentIndex];
 
   useEffect(() => {
-    if (!elementRef.current) return;
+    // Initial delay
+    if (startDelay > 0) {
+      const delayTimer = setTimeout(() => {
+        setCurrentText('');
+      }, startDelay);
+      return () => clearTimeout(delayTimer);
+    }
+  }, [startDelay]);
 
-    const instance = new TypeIt(elementRef.current, {
-      strings: Array.isArray(text) ? text : [text],
-      speed,
-      startDelay,
-      loop,
-      cursor: true,
-      cursorChar: '|',
-      cursorSpeed: 1000,
-      deleteSpeed: 30,
-      breakLines: false,
-      waitUntilVisible: true,
-    });
+  useEffect(() => {
+    if (!currentString) return;
 
-    instance.go();
+    const typeSpeed = isDeleting ? speed / 2 : speed;
+    
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (currentText.length < currentString.length) {
+          setCurrentText(currentString.slice(0, currentText.length + 1));
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => {
+            setIsDeleting(true);
+          }, 2000);
+        }
+      } else {
+        // Deleting
+        if (currentText.length > 0) {
+          setCurrentText(currentString.slice(0, currentText.length - 1));
+        } else {
+          // Finished deleting, move to next string
+          setIsDeleting(false);
+          if (loop) {
+            setCurrentIndex((prev) => (prev + 1) % strings.length);
+          } else if (currentIndex < strings.length - 1) {
+            setCurrentIndex(currentIndex + 1);
+          }
+        }
+      }
+    }, typeSpeed);
 
-    return () => {
-      instance.destroy();
-    };
-  }, [text, speed, startDelay, loop]);
+    return () => clearTimeout(timer);
+  }, [currentText, currentString, isDeleting, speed, strings, currentIndex, loop]);
 
-  return <span ref={elementRef} className={className} />;
+  // Reset when text prop changes
+  useEffect(() => {
+    setCurrentText('');
+    setCurrentIndex(0);
+    setIsDeleting(false);
+  }, [text]);
+
+  return (
+    <span className={className}>
+      {currentText}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
 };
 
 export default TypewriterText;

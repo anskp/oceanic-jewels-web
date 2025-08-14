@@ -3,7 +3,7 @@ import Footer from "@/components/ui/footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building, Users, Target, Globe, Award, Ship, Anchor, Fish } from "lucide-react";
-import companyImage from "@/assets/company-vessel.jpg";
+import companyImage from "@/assets/aboutus.jpg";
 
 const About = () => {
   const values = [

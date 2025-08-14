@@ -3,10 +3,15 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Waves, Fish } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useInView } from "react-intersection-observer";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import FloatingElements from "@/components/animations/FloatingElements";
+import ParticlesBackground from "@/components/animations/ParticlesBackground";
 import TypewriterText from "@/components/animations/TypewriterText";
+import LottieBadge from "../animations/LottieBadge";
 import heroImage from "@/assets/hero-seafood.jpg";
 
 const HeroSection = () => {
@@ -38,10 +43,54 @@ const HeroSection = () => {
     },
   };
 
+  // Pinned stats grid reveal
+  const statsRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    if (!statsRef.current) return;
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: statsRef.current,
+        start: "top 80%",
+        end: "bottom 40%",
+        onEnter: () => gsap.to(statsRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }),
+      });
+    }, statsRef);
+    return () => ctx.revert();
+  }, []);
+
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const bgRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    if (!sectionRef.current || !bgRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        bgRef.current,
+        { y: 0, scale: 1.1 },
+        {
+          y: -150,
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with Parallax Effect */}
-      <div className="absolute inset-0">
+      <div ref={bgRef} className="absolute inset-0 will-change-transform">
         <motion.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -55,6 +104,7 @@ const HeroSection = () => {
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-deep/80" />
+        <ParticlesBackground className="absolute inset-0 pointer-events-none" />
         
         {/* Floating decorative elements */}
         <FloatingElements className="absolute top-20 left-10" intensity="subtle">
@@ -81,9 +131,7 @@ const HeroSection = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <Badge variant="outline" className="border-background/30 text-background mb-6 shadow-ocean">
-            Premium Seafood Exporter
-          </Badge>
+          {/* Removed Premium Seafood Exporter badge */}
         </motion.div>
 
         <motion.div
@@ -136,7 +184,7 @@ const HeroSection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button asChild variant="outline" size="lg" className="border-background text-background hover:bg-background/10">
+              <Button asChild variant="outline" size="lg" className="border-background text-background bg-transparent hover:bg-background/10">
                 <Link to="/about">Learn More</Link>
               </Button>
             </motion.div>
@@ -146,6 +194,8 @@ const HeroSection = () => {
         {/* Stats with animation */}
         <ScrollReveal direction="up" delay={1.0}>
           <motion.div 
+            ref={statsRef}
+            initial={{ opacity: 0, y: 40 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-12 border-t border-background/20"
             variants={containerVariants}
           >
@@ -166,7 +216,7 @@ const HeroSection = () => {
                 <div className="text-3xl lg:text-4xl font-bold text-accent mb-2">
                   {stat.value}
                 </div>
-                <div className="text-background/80">
+                <div className="text-foreground">
                   {stat.label}
                 </div>
               </motion.div>

@@ -12,16 +12,17 @@ import About from "./pages/About";
 import Certifications from "./pages/Certifications";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { useGlobalScrollTriggers } from "@/hooks/useGlobalScrollTriggers";
 
 const queryClient = new QueryClient();
 
 const AnimatedRoutes = () => {
   const location = useLocation();
   useLenis();
+  useGlobalScrollTriggers(location.pathname);
 
   return (
     <div className="relative">
-      <ParticlesBackground className="fixed inset-0 z-0 pointer-events-none" />
       <div className="relative z-10">
         <AnimatePresence mode="wait">
           <motion.div
