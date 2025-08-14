@@ -140,11 +140,6 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-8"
         >
-          <img 
-            src="/images/df2b36a8-f65c-443d-825c-f28ffb9ea614.png" 
-            alt="Al Manwari International Branding" 
-            className="h-20 mx-auto mb-6 drop-shadow-2xl"
-          />
           <h1 className="text-5xl lg:text-7xl font-bold mb-6">
             Premium 
             <span className="block">
