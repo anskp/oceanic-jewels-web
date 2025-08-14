@@ -207,7 +207,7 @@ const Certifications = () => {
               <Card className="border-0 shadow-deep overflow-hidden">
                 <CardContent className="p-0">
                   <img 
-                    src="/lovable-uploads/568c37b6-153c-447f-958a-2dce4be201f8.png" 
+                    src="/images/568c37b6-153c-447f-958a-2dce4be201f8.png" 
                     alt="FDA Certificate of Registration for Al Manwari International LLC" 
                     className="w-full h-auto"
                   />

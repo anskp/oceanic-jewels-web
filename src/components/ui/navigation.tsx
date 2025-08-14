@@ -25,7 +25,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="/lovable-uploads/e7716581-2732-401f-9f91-75bcd2dfc5ce.png" 
+              src="/images/e7716581-2732-401f-9f91-75bcd2dfc5ce.png" 
               alt="Al Manwari International Logo" 
               className="h-12 w-12"
             />

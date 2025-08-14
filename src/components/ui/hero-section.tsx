@@ -93,7 +93,7 @@ const HeroSection = () => {
           className="mb-8"
         >
           <img 
-            src="/lovable-uploads/df2b36a8-f65c-443d-825c-f28ffb9ea614.png" 
+            src="/images/df2b36a8-f65c-443d-825c-f28ffb9ea614.png" 
             alt="Al Manwari International Branding" 
             className="h-20 mx-auto mb-6 drop-shadow-2xl"
           />
